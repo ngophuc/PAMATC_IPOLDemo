@@ -3,132 +3,131 @@
 <%include file="js/createlinkedslider.js" />
 </script>
 
+<p>
+
+  You can set the parameters to extract the image contours: the image
+  thresholds <font color=blue> <i>tmin</i> </font>, <font color=blue> <i>tmax</i> </font>
+  and the minimal contour size <font color=blue> <i>m</i> </font> that you
+  want to extract.  The contours extracted will be used as input of the
+  Frechet algorithm.
+  <br/>
+
+
+</p>
+
 <form action="${app.base_url + 'wait'}" method="get">
     <input type="hidden" name="key" value="${app.key}">
   <div class="action">
     <ul>
-      <li> Set the algorithm parameters:
-      <ul>
-        <li>meaningful thickness detection:
-                          <ul>
-                            <li>
-                                    <!-- code for slider -->
-                                    <div style="float:left;padding-right:25px">
-                                    <label for="maxscale">maximal scale value <font color=blue><i>maxscale</i></font>:</label>
-                                     <input type="text" style="font-family:monospace;text-align:right"
-                                        size="4" id="maxscale" name="maxscale" value="10" />
-                                    </div>
-                                    <div id="maxscale_slider" name="maxscale_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                    <script type="text/javascript">
-                                    // Turn DIV slider into a slider linked to scale
-                                    $(document).ready(function() {
-                                          createLinkedSlider('#maxscale', '#maxscale_slider', 1, 50, 1);
-                                    });
-                                    </script>
-                                    <div style="clear:both"> </div>
-                                    <!-- end of code for slider -->
-                            </li>
-                            <li>
-                                 <!-- code for slider -->
-                                 <div style="float:left;padding-right:25px">
-                                 <label for="samplingstep">sampling step value <font color=blue><i>samplingstep</i></font>:</label>
-                                  <input type="text" style="font-family:monospace;text-align:right"
-                                     size="4" id="samplingstep" name="samplingstep" value="1.0" />
-                                 </div>
-                                 <div id="samplingstep_slider" name="samplingstep_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                 <script type="text/javascript">
-                                 // Turn DIV slider into a slider linked to scale
-                                 $(document).ready(function() {
-                                       createLinkedSlider('#samplingstep', '#samplingstep_slider', 0.1, 5.0, 0.2);
-                                 });
-                                 </script>
-                                 <div style="clear:both"> </div>
-                                 <!-- end of code for slider -->
-                            </li>
-                          </ul>
-        </li>
-        <li>decomposition parameters:
-                          <ul>
-                            <li>
-                                    <!-- code for slider -->
-                                    <div style="float:left;padding-right:25px">
-                                    <label for="alphamax">threshold of admissible angle in the tangent space <font color=blue><i>alphamax</i></font>:</label>
-                                     <input type="text" style="font-family:monospace;text-align:right"
-                                        size="4" id="alphamax" name="alphamax" value="0.78" />
-                                    </div>
-                                    <div id="alphamax_slider" name="alphamax_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                    <script type="text/javascript">
-                                    // Turn DIV slider into a slider linked to scale
-                                    $(document).ready(function() {
-                                          createLinkedSlider('#alphamax', '#alphamax_slider', 0.0, 6.28, 0.1);
-                                    });
-                                    </script>
-                                    <div style="clear:both"> </div>
-                                    <!-- end of code for slider -->
-                            </li>
-                            <li>
-                                 <!-- code for slider -->
-                                 <div style="float:left;padding-right:25px">
-                                 <label for="thickness">width of collinear test in the tangent space <font color=blue><i>thickness</i></font>:</label>
-                                  <input type="text" style="font-family:monospace;text-align:right"
-                                     size="4" id="thickness" name="thickness" value="0.2" />
-                                 </div>
-                                 <div id="thickness_slider" name="thickness_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                 <script type="text/javascript">
-                                 // Turn DIV slider into a slider linked to scale
-                                 $(document).ready(function() {
-                                       createLinkedSlider('#thickness', '#thickness_slider', 0.01, 1.0, 0.01);
-                                 });
-                                 </script>
-                                 <div style="clear:both"> </div>
-                                 <!-- end of code for slider -->
-                            </li>
-                            <li>
-                                 <!-- code for slider -->
-                                 <div style="float:left;padding-right:25px">
-                                 <label for="issetol"> ISSE tolerence approximated between segments and arc <font color=blue><i>issetol</i></font>:</label>
-                                  <input type="text" style="font-family:monospace;text-align:right"
-                                     size="4" id="issetol" name="issetol" value="4.0" />
-                                 </div>
-                                 <div id="issetol_slider" name="issetol_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                 <script type="text/javascript">
-                                 // Turn DIV slider into a slider linked to scale
-                                 $(document).ready(function() {
-                                       createLinkedSlider('#issetol', '#issetol_slider', 0.0, 20.0, 0.1);
-                                 });
-                                 </script>
-                                 <div style="clear:both"> </div>
-                                 <!-- end of code for slider -->
-                            </li>
-                            <li>
-                                 <!-- code for slider -->
-                                 <div style="float:left;padding-right:25px">
-                                 <label for="nbpointcircle"> minimal number of points on a circle <font color=blue><i>nbpointcircle</i></font>:</label>
-                                  <input type="text" style="font-family:monospace;text-align:right"
-                                     size="4" id="nbpointcircle" name="nbpointcircle" value="3" />
-                                 </div>
-                                 <div id="nbpointcircle_slider" name="nbpointcircle_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
-                                 <script type="text/javascript">
-                                 // Turn DIV slider into a slider linked to scale
-                                 $(document).ready(function() {
-                                       createLinkedSlider('#nbpointcircle', '#nbpointcircle_slider', 3, 10, 1);
-                                 });
-                                 </script>
-                                 <div style="clear:both"> </div>
-                                 <!-- end of code for slider -->
-                            </li>
-                          </ul>
-        </li>
-      </ul>  
+      <li> Step 1 (optional): set the contour extraction threshold parameters:
+	  <ul>
+      	<li><input type="radio" name="thresholdtype" value="True" > automatic threshold (Otsu, starting from 0) </li>
+	  	<li><input type="radio" name="thresholdtype" value="False" checked > manual threshold:
+	     	<ul>
+	       		<li>
+	                <!-- code for slider -->
+	                <div style="float:left;padding-right:25px">
+	                <label for="tmin">minimal threshold value <font color=blue><i>tmin</i></font>:</label>
+	                 <input type="text" style="font-family:monospace;text-align:right"
+	                    size="4" id="tmin" name="tmin" value="0" />
+	                </div>
+	                <div id="tmin_slider" name="tmin_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+	                <script type="text/javascript">
+	                // Turn DIV slider into a slider linked to scale
+	                $(document).ready(function() {
+	                      createLinkedSlider('#tmin', '#tmin_slider', 0, 255, 1);
+	                });
+	                </script>
+	                <div style="clear:both"> </div>
+	                <!-- end of code for slider -->
 
-    <br>
+	        	</li>
+	            <li>
+		             <!-- code for slider -->
+		             <div style="float:left;padding-right:25px">
+		             <label for="tmax">maximal threshold value <font color=blue><i>tmax</i></font>:</label>
+		              <input type="text" style="font-family:monospace;text-align:right"
+		                 size="4" id="tmax" name="tmax" value="80" />
+		             </div>
+		             <div id="tmax_slider" name="tmax_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+		             <script type="text/javascript">
+		             // Turn DIV slider into a slider linked to scale
+		             $(document).ready(function() {
+		                   createLinkedSlider('#tmax', '#tmax_slider', 0, 255, 1);
+		             });
+		             </script>
+		             <div style="clear:both"> </div>
+		             <!-- end of code for slider -->
+	 			</li>
+	   		</ul>
+	   	</li>
+      	<li>
+			<!-- code for slider -->
+			<div style="float:left;padding-right:25px">
+			<label for="m">minimal contour size<font color=blue> <i> m</i> </font>:</label>
+			 <input type="text" style="font-family:monospace;text-align:right"
+			    size="4" id="m" name="m" value="128" />
+			</div>
+			<div id="m_slider" name="m_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+			<script type="text/javascript">
+			// Turn DIV slider into a slider linked to scale
+			$(document).ready(function() {
+			      createLinkedSlider('#m', '#m_slider', 0, 10000, 1);
+			});
+			</script>
+			<div style="clear:both"> </div>
+			<!-- end of code for slider -->
+		</li>
+        </ul> 
+     <li> Step 2 : set the parameters for meaningful thickness detector:
+     	<ul>
+     		<li>
+                <!-- code for slider -->
+                <div style="float:left;padding-right:25px">
+                <label for="max">maximun thickness value <font color=blue><i>maxMT</i></font>:</label>
+                 <input type="text" style="font-family:monospace;text-align:right"
+                    size="4" id="max" name="max" value="20" />
+                </div>
+                <div id="max_slider" name="max_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+                <script type="text/javascript">
+                // Turn DIV slider into a slider linked to scale
+                $(document).ready(function() {
+                      createLinkedSlider('#max', '#max_slider', 5, 20, 5);
+                });
+                </script>
+                <div style="clear:both"> </div>
+                <!-- end of code for slider -->
+
+        	</li>
+            <li>
+	             <!-- code for slider -->
+	             <div style="float:left;padding-right:25px">
+	             <label for="step">step value of thickness <font color=blue><i>stepMT</i></font>:</label>
+	              <input type="text" style="font-family:monospace;text-align:right"
+	                 size="4" id="step" name="step" value="1.0" />
+	             </div>
+	             <div id="step_slider" name="step_slider" style="width:280px;float:left;margin-top:4px;font-size:10pt"></div>
+	             <script type="text/javascript">
+	             // Turn DIV slider into a slider linked to scale
+	             $(document).ready(function() {
+	                   createLinkedSlider('#step', '#step_slider', 0.1, 2.0, 0.1);
+	             });
+	             </script>
+	             <div style="clear:both"> </div>
+	             <!-- end of code for slider -->
+ 			</li>
+     	</ul>
+     </li>
+ 	</ul>
     <input type="submit" value="run" />
-
-    </ul>   
   </div>
 </form>
 
 
 <hr />
+
+<div>
+  <img src="${app.work_url + 'input_0.png'}" alt="" />
+</div>
 
 <%include file="footer.html" />
